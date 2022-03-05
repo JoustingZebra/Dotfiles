@@ -1,6 +1,6 @@
 # This script is a welcome message to integrate into .profile
 function welcome_message(){
-#testing
+
 local BOLD=$(tput bold)
 local ROMAN=$(tput sgr0)
 local arch=$(uname -mpi)
