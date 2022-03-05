@@ -17,7 +17,7 @@ Backup current .bashrc:
 
 Curl new .bashrc:
 
-  ``` curl -O https://github.com/JoustingZebra/Dotfiles/blob/main/.bashrc```
+  ``` curl -O https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.bashrc```
 
 Load new .bashrc:
 
