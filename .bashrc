@@ -163,7 +163,7 @@ alias nano='nano -l'
 alias cls='clear'
 alias powershell='pwsh'
 alias py3='python3'
-alais speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -187,7 +187,7 @@ fi
 
 # command cheatsheet
 cheat(){
-    curl cheat.sh/$1
+    curl cheat.sh/"$1"
 }
 
 # search history with grep
@@ -241,16 +241,16 @@ rot13(){
 timecheck(){
     local local_time=$(date -R)
     local UTC=$(date -uR)
-    
+
     echo "UTC: $UTC"
     echo "local: $local_time"
 }
 
-# Weather report 
+# Weather report
 weather(){
-	if [ -n "$1" ]; then
-            curl wttr.in/$1
-	else
+        if [ -n "$1" ]; then
+            curl wttr.in/"$1"
+        else
             curl wttr.in
         fi
 }
