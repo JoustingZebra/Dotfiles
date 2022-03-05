@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This is a script to init a new system
-
+#eol
 sudo echo "L33tM3"
 
 if [[ $UID != 0 ]]; then
