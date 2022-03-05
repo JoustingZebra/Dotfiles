@@ -2,7 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-#testing
 # English
 export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
