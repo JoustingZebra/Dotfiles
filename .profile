@@ -1,5 +1,5 @@
 # This script is a welcome message to integrate into .profile
-#newwol
+
 function welcome_message(){
 
 local BOLD=$(tput bold)
