@@ -4,7 +4,6 @@
 "	 for MS-Windows:  $VIM\_vimrc
 "	      for Haiku:  ~/config/settings/vim/vimrc
 "	    for OpenVMS:  sys$login:.vimrc
-" eol
 
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
