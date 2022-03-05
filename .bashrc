@@ -198,28 +198,28 @@ ghist(){
 # function that changes the prompt.
 # not all machines may have a terminal capabile of supporting the default PS1, so it is now easy to change it on the fly
 prompt(){
-        if [ "$1" == "-classic" ]; then
+        if [ "$1" == "--classic" ]; then
                 export PS1='\[\e[0m\]\u@\h\$'
-        elif [ "$1" == "-custom" ]; then
+        elif [ "$1" == "--custom" ]; then
                 export PS1='\[\e[0;92m\]\u\[\e[0m\]@\[\e[0;92m\]\h\[\e[0m\][\[\e[0;92m\]\w\[\e[0m\]]\[[\[\e[0;92m\]$?\[\e[0m\]]\[\e[0m\]\$\[\e[0m\]'
-        elif [ "$1" == "-custom2" ]; then
+        elif [ "$1" == "--custom2" ]; then
                 export PS1='\[\e[0m\](\[\e[0;1m\]\u\[\e[0m\]@\[\e[0;1m\]\h\[\e[0m\])\[-(\[\e[0;1m\]\w \[\e[0m\][\[\e[0;1m\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed '"'"'s: ::g'"'"') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed '"'"'s/total //'"'"')\[\e[0m\]])\[\e[0m\]\$'
-        elif [ "$1" == "-lean" ]; then
+        elif [ "$1" == "--lean" ]; then
                 export PS1='\[\e[0m\]\u\\$'
-        elif [ "$1" == "-sh" ]; then
+        elif [ "$1" == "--sh" ]; then
                 export PS1="\\$ "
-        elif [ "$1" == "-suse" ]; then
+        elif [ "$1" == "--suse" ]; then
                 export PS1="\u@\h:\w/ > "
                 export PS2="> "
-        elif [ "$1" == "-parrot" ]; then
+        elif [ "$1" == "--parrot" ]; then
                 export PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
-        elif [ "$1" == "-redhat" ]; then
+        elif [ "$1" == "--redhat" ]; then
                 export PS1='[\u@\h \W]\$'
-        elif [ "$1" == "-ubuntu" ]; then
+        elif [ "$1" == "--ubuntu" ]; then
                 export PS1='\u@\h:\W\$'
-        elif [ "$1" == "-zsh" ]; then
+        elif [ "$1" == "--zsh" ]; then
                 export PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}('$info_color'\u${prompt_symbol}\h'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color']\n'$prompt_color'└─'$info_color'\$\[\033[0m\] '
-        elif [ "$1" == "-reset" ]; then
+        elif [ "$1" == "--reset" ]; then
                 export PS1=$PS1_backup
                 export PS2=$PS2_backup
         else
