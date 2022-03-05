@@ -1,0 +1,13 @@
+#!
+# this is the sshrc config file
+
+currentshell=$(ps $$ | awk 'NR==2{print$5}' | sed -s 's/\/bin\///g')
+
+# check to see what shell we're in and load the appropriate config file
+if [[ $currentshell == *"bash" ]]; then
+	. $SSHHOME/.sshrc.d/.bashrc
+elif [[ $currentshell == *"zsh" ]]; then
+	. $SSHHOME/.sshrc.d/.zshrc
+else
+	echo "No sshrc files found for ${currentshell}"
+fi
