@@ -1,5 +1,5 @@
 #!/bin/bash
-# EOL
+
 # This is a script to init a new system
 
 sudo echo "L33tM3"
