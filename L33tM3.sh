@@ -389,11 +389,11 @@ if [[ $userinput == y* ]]; then
     mv .vimrc .vimrc.bak
     mv .profile .profile.bak
     
-    curl -o .bashrc https://raw.github.com/JoustingZebra/Dotfiles/blob/main/.bashrc
-    curl -o .profile https://raw.github.com/JoustingZebra/Dotfiles/blob/main/.bashrc
-    curl -o .sshrc https://raw.github.com/JoustingZebra/Dotfiles/blob/main/.sshrc
-    curl -o .vimrc https://raw.github.com/JoustingZebra/Dotfiles/blob/main/.vimrc
-    curl -o .zshrc https://raw.github.com/JoustingZebra/Dotfiles/blob/main/.zshrc
+    curl -o .bashrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.bashrc
+    curl -o .profile https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.profile
+    curl -o .sshrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.sshrc
+    curl -o .vimrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.vimrc
+    curl -o .zshrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.zshrc
     source .bashrc
 else
     echo "Skipping dotfile load"
