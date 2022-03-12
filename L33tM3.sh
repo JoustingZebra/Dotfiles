@@ -394,7 +394,7 @@ if [[ $userinput == y* ]]; then
     curl -o .sshrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.sshrc
     curl -o .vimrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.vimrc
     curl -o .zshrc https://raw.githubusercontent.com/JoustingZebra/Dotfiles/main/.zshrc
-    source .bashrc
+    # source .bashrc
 else
     echo "Skipping dotfile load"
 fi
