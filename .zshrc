@@ -18,6 +18,8 @@ PROMPT_EOL_MARK=""
 
 # set default text editor
 export EDITOR=vim
+export KEYTIMEOUT=1
+
 # configure key keybindings
 #bindkey -e                                        # emacs key bindings
 bindkey -v										  # vi key bindings
