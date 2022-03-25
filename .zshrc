@@ -2,7 +2,7 @@
 # see /usr/share/doc/zsh/examples/zshrc for examples
 
 setopt autocd              # change directory just by typing its name
-setopt BEEP                # beep on error in ZLE
+setopt beep                # beep on error in ZLE
 #setopt correct            # auto correct mistakes
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
@@ -43,7 +43,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab
 # History configurations
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
-SAVEHIST=2000
+SAVEHIST=1000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
