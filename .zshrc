@@ -199,6 +199,7 @@ alias l='ls -CF'
 
 # Other aliases
 alias cls='clear'
+alias pfetch='clear && curl -s https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch | sh'
 alias py='python'
 alias py3='python3'
 alias powershell='pwsh'
