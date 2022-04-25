@@ -160,6 +160,7 @@ alias l='ls -CF'
 # yet more aliases
 alias nano='nano -l'
 alias cls='clear'
+alias pfetch='clear && curl -s https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch | sh'
 alias powershell='pwsh'
 alias py3='python3'
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
