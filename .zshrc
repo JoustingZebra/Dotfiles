@@ -212,6 +212,11 @@ fi
 # setting for tab completion with sshrc
 compdef sshrc=ssh
 
+
+cheat(){
+    curl cheat.sh/"$1"
+}
+
 # function that changes the prompt.
 prompt(){
 	if [ "$1" == "-classic" ]; then
