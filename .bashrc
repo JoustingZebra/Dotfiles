@@ -192,7 +192,21 @@ cheat(){
 
 # search history with grep
 ghist(){
-        history | grep "$1";
+   history | grep "$1";
+}
+
+# ping list of ip addresses in file (seperated by newline)
+pinglist(){
+    read -erp "Enter the file that contains the addresses you would like to ping:" Targets
+    echo -e "\n"
+    while read -r line; do
+        local NoReply=$(ping "$line" -c 2 -q | grep "0 received")
+        if [ "$NoReply: ]; then
+            echo "No Reply from $line"
+        else
+            echo "Reply form $line"
+        fi
+        done < "$Targets"
 }
 
 # function that changes the prompt.
