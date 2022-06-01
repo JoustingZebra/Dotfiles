@@ -201,7 +201,7 @@ pinglist(){
     echo -e "\n"
     while read -r line; do
         local NoReply=$(ping "$line" -c 2 -q | grep "0 received")
-        if [ "$NoReply: ]; then
+        if [ "$NoReply" ]; then
             echo "No Reply from $line"
         else
             echo "Reply form $line"
