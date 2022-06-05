@@ -212,10 +212,29 @@ fi
 # setting for tab completion with sshrc
 compdef sshrc=ssh
 
-
+# search history with grep
+ghist(){
+   history | grep "$1";
+}
+# command cheatsheet
 cheat(){
     curl cheat.sh/"$1"
 }
+
+# ping list of ip addresses in file (seperated by newline)
+pinglist(){
+    read -erp "Enter the file that contains the addresses you would like to ping:" Targets
+    echo -e "\n"
+    while read -r line; do
+        local NoReply=$(ping "$line" -c 2 -q | grep "0 received")
+        if [ "$NoReply" ]; then
+            echo "No Reply from $line"
+        else
+            echo "Reply form $line"
+        fi
+        done < "$Targets"
+}
+
 
 # function that changes the prompt.
 prompt(){
@@ -237,4 +256,31 @@ prompt(){
 		echo "Error in prompt function"
         fi
 
+}
+
+# rot13
+rot13(){
+        if [ $# = 0 ] ; then
+         tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
+        else
+         tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" < $1
+    fi
+}
+
+# timecheck
+timecheck(){
+    local local_time=$(date -R)
+    local UTC=$(date -uR)
+
+    echo "UTC: $UTC"
+    echo "local: $local_time"
+}
+
+# Weather report
+weather(){
+        if [ -n "$1" ]; then
+            curl wttr.in/"$1"
+        else
+            curl wttr.in
+        fi
 }
