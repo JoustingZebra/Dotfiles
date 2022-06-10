@@ -70,6 +70,38 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
+        
+  # milliseconds since epoch
+  function t_now {
+     date +%s%3N
+  }
+  
+  function t_start {
+    t_start=${t_start:-$(t_now)}
+    }
+ 
+  function t_stop {
+        local d_ms=$(($(t_now) - $t_start))
+        local d_s=$((d_ms / 1000))
+        local ms=$((d_ms % 1000))
+        local s=$((d_s % 60))
+        local m=$(((d_s / 60) % 60))
+        local h=$((d_s / 3600))
+        if ((h > 0)); then t_show=${h}h${m}m
+            elif ((m > 0)); then t_show=${m}m${s}s
+            elif ((s >= 10)); then t_show=${s}.$((ms / 100))s
+            elif ((s > 0)); then t_show=${s}.$((ms / 10))s
+            else t_show=${ms}ms
+        fi
+            unset t_start
+        }
+  
+    function set_prompt () {
+        t_stop
+        }
+  
+        trap 't_start' DEBUG
+        
         # define colors
         # for Bold colors change the 0 to a 1. I.e bold black is '\e[1;30m'
 
@@ -94,7 +126,7 @@ if [ "$color_prompt" = yes ]; then
         HI_cyan=$'\033[0;96m'
         HI_white=$'\033[0;97m'
 
-    prompt_color=$reset_color
+        prompt_color=$reset_color
         info_color=$blue
         prompt_symbol=∈ # "belongs to" or "member of" symbol
     if [ "$EUID" -eq 0 ]; then # Change prompt colors for root user
@@ -104,9 +136,10 @@ if [ "$color_prompt" = yes ]; then
     fi
 
         # This little line right here is a statement that gives us the prompt_status which is equal to "$?". i.e the exit code.
-        PROMPT_COMMAND='prompt_status="$?"; if [[ $prompt_status == "0" ]]; then prompt_status="0"; fi'
-    # cooler prompt
-        PS1='\[${prompt_color}\]┌──${debian_chroot:+($debian_chroot)──}(\[${info_color}\]\u${prompt_symbol}\h\[${prompt_color}\])-[\[$info_color\]\w\[${prompt_color}\]]-[\[$info_color\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed '"'"'s: ::g'"'"') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed '"'"'s/total //'"'"')\[${prompt_color}\]]\[\033[0m\]\n\[${prompt_color}\]└─\[${prompt_color}\](\[${info_color}\]$(echo $SHLVL)-$prompt_status\[${prompt_color}\])\[${prompt_color}\]\$\[\033[0m\] '
+        # and calls t_stop
+        PROMPT_COMMAND='t_stop; prompt_status="$?"; if [[ $prompt_status == "0" ]]; then prompt_status="0"; fi'
+        # cooler prompt
+        PS1='\[${prompt_color}\]${debian_chroot:+($debian_chroot)}(\[${info_color}\]\u${prompt_symbol}\h\[${prompt_color}\])-[\[$info_color\]\w\[${prompt_color}\]]-[\[$info_color\]$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed '"'"'s: ::g'"'"') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed '"'"'s/total //'"'"')\[${prompt_color}\]]\[\033[0m\]\n\[${prompt_color}\]\[${prompt_color}\][\[${info_color}${t_show}\[${prompt_color}\]]-(\[${info_color}\]$(echo $SHLVL)-${prompt_status}\[${prompt_color}\])\[${prompt_color}\]\$\[\033[0m\]'
 
         # BackTrack red prompt
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
