@@ -286,7 +286,7 @@ timecheck(){
     local UTC=$(date -uR)
 
     echo "UTC: $UTC"
-    echo "local: $local_time"
+    echo "Local: $local_time"
 }
 
 # Weather report
