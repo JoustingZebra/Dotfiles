@@ -84,6 +84,8 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 
+autoload colors && colors
+
 prompt_preexec() {
   prompt_prexec_realtime=${EPOCHREALTIME}
 }
