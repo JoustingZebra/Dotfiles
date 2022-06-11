@@ -84,10 +84,71 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 
-	PROMPT=$'%F{%(#.blue.reset)}┌──${debian_chroot:+($debian_chroot)──}(%B%F{%(#.red.blue)}%n%(#.⊩.∈)%m%b%F{%(#.blue.reset)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.reset)}]-[%B$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed \'s: ::g\') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed \'s/total //\')%b]\n└─(%b%f%L-%?%b%F{%(#.blue.reset)})%B%(#.%F{red}#.%F{blue}$)%b%F{reset}'
-	RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
+ prompt_preexec() {
+                prompt_prexec_realtime=${EPOCHREALTIME}
+        }
+
+        prompt_precmd() {
+                if (( prompt_prexec_realtime )); then
+                local -rF elapsed_realtime=$(( EPOCHREALTIME - prompt_prexec_realtime ))
+                local -rF s=$(( elapsed_realtime%60 ))
+                local -ri elapsed_s=${elapsed_realtime}
+                local -ri m=$(( (elapsed_s/60)%60 ))
+                local -ri h=$(( elapsed_s/3600 ))
+                if (( h > 0 )); then
+                        printf -v prompt_elapsed_time '%ih%im' ${h} ${m}
+                elif (( m > 0 )); then
+                        printf -v prompt_elapsed_time '%im%is' ${m} ${s}
+                elif (( s >= 10 )); then
+                        printf -v prompt_elapsed_time '%.2fs' ${s} # 12.34s
+                elif (( s >= 1 )); then
+                        printf -v prompt_elapsed_time '%.3fs' ${s} # 1.234s
+                else
+                        printf -v prompt_elapsed_time '%ims' $(( s*1000 ))
+                fi
+        unset prompt_prexec_realtime
+                else
+                # Clear previous result when hitting ENTER with no command to execute
+                unset prompt_elapsed_time
+                fi
+}
 
 
+
+
+prompt_preexec() {
+  prompt_prexec_realtime=${EPOCHREALTIME}
+}
+
+prompt_precmd() {
+  if (( prompt_prexec_realtime )); then
+    local -rF elapsed_realtime=$(( EPOCHREALTIME - prompt_prexec_realtime ))
+    local -rF s=$(( elapsed_realtime%60 ))
+    local -ri elapsed_s=${elapsed_realtime}
+    local -ri m=$(( (elapsed_s/60)%60 ))
+    local -ri h=$(( elapsed_s/3600 ))
+    if (( h > 0 )); then
+      printf -v prompt_elapsed_time '%ih%im' ${h} ${m}
+    elif (( m > 0 )); then
+      printf -v prompt_elapsed_time '%im%is' ${m} ${s}
+    elif (( s >= 10 )); then
+      printf -v prompt_elapsed_time '%.2fs' ${s} # 12.34s
+    elif (( s >= 1 )); then
+      printf -v prompt_elapsed_time '%.3fs' ${s} # 1.234s
+    else
+      printf -v prompt_elapsed_time '%ims' $(( s*1000 ))
+    fi
+    unset prompt_prexec_realtime
+  else
+    # Clear previous result when hitting ENTER with no command to execute
+    unset prompt_elapsed_time
+  fi
+}
+      
+PROMPT=$'%F{%(#.blue.reset)}<E2><94><8C><E2><94><80><E2><94><80>${debian_chroot:+($debian_chroot)<E2><94><80><E2><94><80>}(%B%F{%(#.red.blue)}%n%(#.<E2><8A><A9>.<E2><88><88>)%m%b%F{%(#.blue.reset)})-[%B%{$fg[blue]%}%(6~.%-1~/<E2><80><A6<A6>/%4~.%5~)%b%F{%(#.blue.reset)}]-[%{$fg[blue]%}%B$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed \'s: ::g\') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed \'s/total //\')%b]\n<E2><94><94><E2><94><80>[%B%{$fg[blue]%}${prompt_elapsed_time}%b](%B%{$fg[blue]%}%L-%?%b)%(#.%F{red}#.$)%b%F{reset}'
+
+
+RPROMPT=$'%(?.. %? %F{red}%B<E2><A8><AF>%b%F{reset})%(1j. %j %F{yellow}%B<E2><9A><99>%b%F{reset}.)'
 
     # enable syntax-highlighting
     if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && [ "$color_prompt" = yes ]; then
