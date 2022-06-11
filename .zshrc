@@ -145,7 +145,7 @@ prompt_precmd() {
   fi
 }
       
-PROMPT=$'%F{%(#.blue.reset)}<E2><94><8C><E2><94><80><E2><94><80>${debian_chroot:+($debian_chroot)<E2><94><80><E2><94><80>}(%B%F{%(#.red.blue)}%n%(#.<E2><8A><A9>.<E2><88><88>)%m%b%F{%(#.blue.reset)})-[%B%{$fg[blue]%}%(6~.%-1~/<E2><80><A6<A6>/%4~.%5~)%b%F{%(#.blue.reset)}]-[%{$fg[blue]%}%B$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed \'s: ::g\') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed \'s/total //\')%b]\n<E2><94><94><E2><94><80>[%B%{$fg[blue]%}${prompt_elapsed_time}%b](%B%{$fg[blue]%}%L-%?%b)%(#.%F{red}#.$)%b%F{reset}'
+PROMPT=$'%F{%(#.blue.reset)}${debian_chroot:+($debian_chroot)}(%B%F{%(#.red.blue)}%n%(#.)%m%b%F{%(#.blue.reset)})-[%B%{$fg[blue]%}%(6~.%-1~/)%b%F{%(#.blue.reset)}]-[%{$fg[blue]%}%B$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed \'s: ::g\') files, $(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed \'s/total //\')%b]\n[%B%{$fg[blue]%}${prompt_elapsed_time}%b](%B%{$fg[blue]%}%L-%?%b)%(#.%F{red}#.$)%b%F{reset}'
 
 
 RPROMPT=$'%(?.. %? %F{red}%B<E2><A8><AF>%b%F{reset})%(1j. %j %F{yellow}%B<E2><9A><99>%b%F{reset}.)'
