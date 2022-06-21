@@ -425,7 +425,10 @@ if [[ $userinput == y* ]]; then
 
     # crunch
     apt-get install crunch
-
+    
+    # dirb
+    apt-get install dirb
+    
     # ftp
     apt-get install ftp
 
@@ -440,6 +443,9 @@ if [[ $userinput == y* ]]; then
 
     #hash-identifier
     apt-get install hash-identifier
+    
+    # hashcat
+    apt-get install hashcat
 
     # impacket
     apt-get install python3-impacket
@@ -450,17 +456,23 @@ if [[ $userinput == y* ]]; then
     # Python3 
     apt-get install python3
     apt-get install pip
+    
+    # Seclists
+    apt-get install seclists
 
     # SSHRC
-    wget https://raw.githubusercontent.com/taylorskalyo/sshrc/master/sshrc
-    chmod 700 sshrc
-    mv sshrc /usr/local/bin #or anywhere else on your PATH
+    #wget https://raw.githubusercontent.com/taylorskalyo/sshrc/master/sshrc
+    #chmod 700 sshrc
+    #mv sshrc /usr/local/bin #or anywhere else on your PATH
 
     # Nmap
     apt-get install nmap
 
     # man
     apt-get install man
+    
+    # Metasploit
+    apt-get install metasploit-framework
 
     # shellcheck
     apt-get install shellcheck
@@ -476,9 +488,9 @@ if [[ $userinput == y* ]]; then
     apt-get install gdb
 
     # Pentest framework
-    git clone https://github.com/trustedsec/ptf.git
-    cd ptf
-    pip install -r requirements.txt
+    #git clone https://github.com/trustedsec/ptf.git
+    #cd ptf
+    #pip install -r requirements.txt
 
     ## These should be managed with ptf
     # Turbolist3r
