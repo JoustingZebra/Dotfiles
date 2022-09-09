@@ -249,6 +249,10 @@ fi
 # setting for tab completion with sshrc
 compdef sshrc=ssh
 
+# set environmental variables
+
+export WORDLISTS="/usr/share/wordlists"
+
 # search history with grep
 ghist(){
    history | grep "$1";
