@@ -218,6 +218,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# set environmental variables
+export WORDLISTS="/usr/share/wordlists"
+
 # command cheatsheet
 cheat(){
     curl cheat.sh/"$1"
