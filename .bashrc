@@ -220,6 +220,7 @@ fi
 
 # set environmental variables
 export WORDLISTS="/usr/share/wordlists"
+export FUZZING="/home/kali/.ZAP/fuzzers/"
 
 # command cheatsheet
 cheat(){
