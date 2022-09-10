@@ -252,6 +252,7 @@ compdef sshrc=ssh
 # set environmental variables
 
 export WORDLISTS="/usr/share/wordlists"
+export FUZZING="/home/kali/.ZAP/fuzzers/"
 
 # search history with grep
 ghist(){
