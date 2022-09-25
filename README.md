@@ -62,7 +62,7 @@ for example ``` prompt --classic```
 
 Default:
 
-The "2" in this prompt is the $BASH_SUBSHELL variable, which increments by one every time you spawn a new shell. The "0" is the "$?" variable (exit status of the last command) 
+The "2" in this prompt is the ```$BASH_SUBSHELL``` variable, which increments by one every time you spawn a new shell. The "0" is the "$?" variable (exit status of the last command) 
 
 
 ![alt text](https://github.com/JoustingZebra/Dotfiles/blob/main/Images/default_prompt.PNG)
