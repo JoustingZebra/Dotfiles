@@ -234,16 +234,13 @@ ghist(){
 
 # ping list of ip addresses in file (seperated by newline)
 pinglist(){
-    read -erp "Enter the file that contains the addresses you would like to ping:" Targets
-    echo -e "\n"
-    while read -r line; do
-        local NoReply=$(ping "$line" -c 2 -q | grep "0 received")
-        if [ "$NoReply" ]; then
-            echo "No Reply from $line"
-        else
-            echo "Reply form $line"
-        fi
-        done < "$Targets"
+read -erp "Input file:" infile
+serverlist=$(cat $infile)
+for line in $serverlist
+do
+  echo -n "$line rtt avg: "
+  ping -c 4 $line | grep rtt | awk '{print $4}' | awk -F/ '{print $2}' | tr '\n' ' ' && echo "ms"
+done
 }
 
 # function that changes the prompt.
