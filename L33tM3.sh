@@ -419,6 +419,9 @@ if [[ $userinput == y* ]]; then
     # 0trace
     apt-get install 0trace
 
+    # hex editor
+    apt-get install bvi
+    
     # cewl
     apt-get install cewl
 
@@ -442,9 +445,6 @@ if [[ $userinput == y* ]]; then
 
     #hashid
     apt-get install hashid
-
-    #hash-identifier
-    apt-get install hash-identifier
     
     # hashcat
     apt-get install hashcat
@@ -469,6 +469,9 @@ if [[ $userinput == y* ]]; then
 
     # Nmap
     apt-get install nmap
+    
+    # Name that hash
+    apt-get install nth
 
     # man
     apt-get install man
