@@ -510,6 +510,9 @@ if [[ $userinput == y* ]]; then
 
     #pwncat
     apt-get install pwncat
+    
+    #rlwrap
+    apt-get install rlwrap
 
     # Tracers
     apt-get install strace
